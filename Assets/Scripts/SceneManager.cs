@@ -59,14 +59,17 @@ public class SceneManager : MonoBehaviour
 
     public void AddNewPlayer()
     {
-        Player player = new Player();
-        player.name = nameText.text.ToString();
-        player.age = Int32.Parse(ageText.text.ToString());
-        int dropDownIndex = type.value;
-        player.type = type.options[dropDownIndex].text.ToString();
-        playerDataController.AddNewPlayer(player);
+		if(nameText.text.ToString() != "" && ageText.text.ToString() != ""){
+			Player player = new Player();
+			player.name = nameText.text.ToString();
+			player.age = Int32.Parse(ageText.text.ToString());
+			int dropDownIndex = type.value;
+			player.type = type.options[dropDownIndex].text.ToString();
+			playerDataController.AddNewPlayer(player);
 
-        LoadPlayer();
+			LoadPlayer();
+		}
+        
         newPlayerPanel.SetActive(false);
     }
 
